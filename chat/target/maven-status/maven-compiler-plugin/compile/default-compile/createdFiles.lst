@@ -1,0 +1,4 @@
+com\niit\chat\dao\UserDAOImpl.class
+com\niit\chat\config\ApplicationContext.class
+com\niit\chat\dao\UserDAO.class
+com\niit\chat\model\Users.class
