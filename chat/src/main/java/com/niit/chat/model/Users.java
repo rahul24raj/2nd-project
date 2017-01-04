@@ -1,96 +1,98 @@
 package com.niit.chat.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-@Entity
-@Component
-@Table(name="users")
-public class Users 
-{
 
-	private String id;
+@Entity 
+@Table(name="users")
+@Component
+public class Users {
 	@Id
-	private String name;
-	private String email;
-	private String dob;
-	private String password;
-	private String gender;
-	private int mobile;
-	private char status;
-	private String role;
-	private String address;
-	private char isonline;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getDob() {
-		return dob;
-	}
-	public void setDob(String dob) {
-		this.dob = dob;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public int getMobile() {
-		return mobile;
-	}
-	public void setMobile(int mobile) {
-		this.mobile = mobile;
-	}
-	public char getStatus() {
-		return status;
-	}
-	public void setStatus(char status) {
-		this.status = status;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public char getIsonline() {
-		return isonline;
-	}
-	public void setIsonline(char isonline) {
-		this.isonline = isonline;
-	}
+	@GeneratedValue(strategy=GenerationType.AUTO)
+private int id;
 	
-	
-	
+@Column(unique=true,nullable=false)
+private String username;
+
+@Column(nullable=false)
+private String password;
+
+@Column(unique=true,nullable=false)
+private String email;
+
+//STUDENT, ALUMINI,EMPLOYEE, ADMIN
+private String role;
+
+//enabled - true or false  - active or inactive user 
+//true - authenticated
+//false - user cannot login
+@Column(name="enabled")
+private boolean enabled;
+
+public boolean isEnabled() {
+	return enabled;
+}
+public void setEnabled(boolean enabled) {
+	this.enabled = enabled;
+}
+//inOnline - true, false
+//user login - make this isOnline as true - login 
+//user logout - make this isOnline as false - logout
+@Column(name="isonline")
+private boolean isOnline;
+
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public String getUsername() {
+	return username;
+}
+public void setUsername(String username) {
+	this.username = username;
+}
+public String getPassword() {
+	return password;
+}
+public void setPassword(String password) {
+	this.password = password;
+}
+public String getEmail() {
+	return email;
+}
+public void setEmail(String email) {
+	this.email = email;
+}
+
+public String getRole() {
+	return role;
+}
+public void setRole(String role) {
+	this.role = role;
+}
+public boolean isStatus() {
+	return enabled;
+}
+public void setStatus(boolean status) {
+	this.enabled = status;
+}
+public boolean isOnline() {
+	return isOnline;
+}
+public void setOnline(boolean isOnline) {
+	this.isOnline = isOnline;
+}
+@Override
+public String toString() {
+	return this.username + " " + this.email + " " + this.role + "\n";
+}
 }
