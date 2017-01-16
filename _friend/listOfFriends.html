@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+body
+{
+	background-image: url(image/rahul5.jpg);
+}
+
+</style>
+</head>
+<body>
+<a href="http://www.animatedimages.org/cat-friendship-1204.htm"><img src="http://www.animatedimages.org/data/media/1204/animated-friendship-image-0078.gif" border="0" alt="animated-friendship-image-0078"/></a>
+<table class="table table-striped">
+<tr ng-repeat="f in friends">
+<td>{{f.fromId}}</td>
+<td>{{f.toId}}</td>
+<td><a href="#/chat" ng-click="" class="btn btn-default">chat</a></td>
+</tr>
+</table>
+</body>
+</html>
